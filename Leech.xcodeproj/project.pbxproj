@@ -16,6 +16,7 @@
 		AB0E9E9C29E19DE5002B956E /* AuthInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9E9B29E19DE5002B956E /* AuthInputView.swift */; };
 		AB0E9E9E29E1A6EA002B956E /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9E9D29E1A6EA002B956E /* AuthManager.swift */; };
 		AB0E9EA029E1A854002B956E /* LUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9E9F29E1A854002B956E /* LUser.swift */; };
+		AB0E9EA229E1BDF3002B956E /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EA129E1BDF3002B956E /* ErrorView.swift */; };
 		AB8C4CEB29DC5FFB00C09C9E /* LeechApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C4CEA29DC5FFB00C09C9E /* LeechApp.swift */; };
 		AB8C4CED29DC5FFB00C09C9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C4CEC29DC5FFB00C09C9E /* ContentView.swift */; };
 		AB8C4CEF29DC5FFC00C09C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB8C4CEE29DC5FFC00C09C9E /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		AB0E9E9B29E19DE5002B956E /* AuthInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInputView.swift; sourceTree = "<group>"; };
 		AB0E9E9D29E1A6EA002B956E /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		AB0E9E9F29E1A854002B956E /* LUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUser.swift; sourceTree = "<group>"; };
+		AB0E9EA129E1BDF3002B956E /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		AB8C4CE729DC5FFB00C09C9E /* Leech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8C4CEA29DC5FFB00C09C9E /* LeechApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeechApp.swift; sourceTree = "<group>"; };
 		AB8C4CEC29DC5FFB00C09C9E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				AB8C4D4529DF20CA00C09C9E /* VideoView.swift */,
 				AB0E9E8D29E0C195002B956E /* HomeVIew.swift */,
 				AB0E9E9B29E19DE5002B956E /* AuthInputView.swift */,
+				AB0E9EA129E1BDF3002B956E /* ErrorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				AB0E9EA029E1A854002B956E /* LUser.swift in Sources */,
 				AB0E9E9E29E1A6EA002B956E /* AuthManager.swift in Sources */,
 				AB8C4D4629DF20CA00C09C9E /* VideoView.swift in Sources */,
+				AB0E9EA229E1BDF3002B956E /* ErrorView.swift in Sources */,
 				AB8C4D3C29DD7F6D00C09C9E /* ImagExt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

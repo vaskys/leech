@@ -22,6 +22,7 @@ final class UserAuthVM: ObservableObject {
             do {
                 let user = try await AuthManger.manager.register(email: email, password: password)
                 print("Registed Succes")
+                print(user)
             } catch {
                 print("Error: \(error)")
             }
