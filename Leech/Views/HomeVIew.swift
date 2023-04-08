@@ -7,14 +7,19 @@
 
 import SwiftUI
 
-struct HomeVIew: View {
+struct HomeView: View {
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("MEGALUL")
+            
+        }
     }
 }
 
 struct HomeVIew_Previews: PreviewProvider {
     static var previews: some View {
-        HomeVIew()
+        HomeView()
     }
 }

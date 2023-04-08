@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB0E9E8E29E0C195002B956E /* HomeVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9E8D29E0C195002B956E /* HomeVIew.swift */; };
+		AB0E9E8E29E0C195002B956E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9E8D29E0C195002B956E /* HomeView.swift */; };
 		AB0E9E9129E0CA94002B956E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AB0E9E9029E0CA94002B956E /* FirebaseAnalytics */; };
 		AB0E9E9329E0CA94002B956E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB0E9E9229E0CA94002B956E /* FirebaseAnalyticsSwift */; };
 		AB0E9E9629E1924A002B956E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AB0E9E9529E1924A002B956E /* FirebaseAuth */; };
 		AB0E9E9829E19675002B956E /* UserAuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9E9729E19675002B956E /* UserAuthVM.swift */; };
 		AB0E9E9A29E19BCE002B956E /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9E9929E19BCE002B956E /* RegisterView.swift */; };
 		AB0E9E9C29E19DE5002B956E /* AuthInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9E9B29E19DE5002B956E /* AuthInputView.swift */; };
-		AB0E9E9E29E1A6EA002B956E /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9E9D29E1A6EA002B956E /* AuthManager.swift */; };
 		AB0E9EA029E1A854002B956E /* LUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9E9F29E1A854002B956E /* LUser.swift */; };
-		AB0E9EA229E1BDF3002B956E /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EA129E1BDF3002B956E /* ErrorView.swift */; };
+		AB0E9EA429E1C0E3002B956E /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EA329E1C0E3002B956E /* NetworkMonitor.swift */; };
+		AB0E9EA729E1CED0002B956E /* RootVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EA629E1CED0002B956E /* RootVM.swift */; };
 		AB8C4CEB29DC5FFB00C09C9E /* LeechApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C4CEA29DC5FFB00C09C9E /* LeechApp.swift */; };
 		AB8C4CED29DC5FFB00C09C9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C4CEC29DC5FFB00C09C9E /* ContentView.swift */; };
 		AB8C4CEF29DC5FFC00C09C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB8C4CEE29DC5FFC00C09C9E /* Assets.xcassets */; };
@@ -29,13 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AB0E9E8D29E0C195002B956E /* HomeVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVIew.swift; sourceTree = "<group>"; };
+		AB0E9E8D29E0C195002B956E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AB0E9E9729E19675002B956E /* UserAuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthVM.swift; sourceTree = "<group>"; };
 		AB0E9E9929E19BCE002B956E /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		AB0E9E9B29E19DE5002B956E /* AuthInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInputView.swift; sourceTree = "<group>"; };
-		AB0E9E9D29E1A6EA002B956E /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		AB0E9E9F29E1A854002B956E /* LUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUser.swift; sourceTree = "<group>"; };
-		AB0E9EA129E1BDF3002B956E /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		AB0E9EA329E1C0E3002B956E /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		AB0E9EA629E1CED0002B956E /* RootVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVM.swift; sourceTree = "<group>"; };
 		AB8C4CE729DC5FFB00C09C9E /* Leech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8C4CEA29DC5FFB00C09C9E /* LeechApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeechApp.swift; sourceTree = "<group>"; };
 		AB8C4CEC29DC5FFB00C09C9E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,6 +69,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AB0E9EA529E1CE8A002B956E /* xD */ = {
+			isa = PBXGroup;
+			children = (
+				AB8C4CEA29DC5FFB00C09C9E /* LeechApp.swift */,
+				AB0E9EA329E1C0E3002B956E /* NetworkMonitor.swift */,
+			);
+			path = xD;
+			sourceTree = "<group>";
+		};
 		AB8C4CDE29DC5FFB00C09C9E = {
 			isa = PBXGroup;
 			children = (
@@ -89,15 +98,14 @@
 		AB8C4CE929DC5FFB00C09C9E /* Leech */ = {
 			isa = PBXGroup;
 			children = (
+				AB0E9EA529E1CE8A002B956E /* xD */,
 				AB8C4D3E29DF156300C09C9E /* VIewModel */,
 				AB8C4D3D29DF155A00C09C9E /* Model */,
 				AB8C4D3A29DD7F6400C09C9E /* Ext */,
 				AB8C4D3329DD70DD00C09C9E /* Views */,
 				AB8C4CFA29DC608F00C09C9E /* GoogleService-Info.plist */,
-				AB8C4CEA29DC5FFB00C09C9E /* LeechApp.swift */,
 				AB8C4CEE29DC5FFC00C09C9E /* Assets.xcassets */,
 				AB8C4CF029DC5FFC00C09C9E /* Preview Content */,
-				AB0E9E9D29E1A6EA002B956E /* AuthManager.swift */,
 			);
 			path = Leech;
 			sourceTree = "<group>";
@@ -118,9 +126,8 @@
 				AB8C4D3629DD711D00C09C9E /* LoginView.swift */,
 				AB8C4D3F29DF15DF00C09C9E /* LogoView.swift */,
 				AB8C4D4529DF20CA00C09C9E /* VideoView.swift */,
-				AB0E9E8D29E0C195002B956E /* HomeVIew.swift */,
+				AB0E9E8D29E0C195002B956E /* HomeView.swift */,
 				AB0E9E9B29E19DE5002B956E /* AuthInputView.swift */,
-				AB0E9EA129E1BDF3002B956E /* ErrorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -145,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0E9E9729E19675002B956E /* UserAuthVM.swift */,
+				AB0E9EA629E1CED0002B956E /* RootVM.swift */,
 			);
 			path = VIewModel;
 			sourceTree = "<group>";
@@ -228,8 +236,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB0E9E8E29E0C195002B956E /* HomeVIew.swift in Sources */,
+				AB0E9E8E29E0C195002B956E /* HomeView.swift in Sources */,
 				AB0E9E9A29E19BCE002B956E /* RegisterView.swift in Sources */,
+				AB0E9EA729E1CED0002B956E /* RootVM.swift in Sources */,
 				AB8C4D4029DF15DF00C09C9E /* LogoView.swift in Sources */,
 				AB8C4D3729DD711D00C09C9E /* LoginView.swift in Sources */,
 				AB8C4CED29DC5FFB00C09C9E /* ContentView.swift in Sources */,
@@ -237,10 +246,9 @@
 				AB8C4CEB29DC5FFB00C09C9E /* LeechApp.swift in Sources */,
 				AB0E9E9C29E19DE5002B956E /* AuthInputView.swift in Sources */,
 				AB0E9EA029E1A854002B956E /* LUser.swift in Sources */,
-				AB0E9E9E29E1A6EA002B956E /* AuthManager.swift in Sources */,
 				AB8C4D4629DF20CA00C09C9E /* VideoView.swift in Sources */,
-				AB0E9EA229E1BDF3002B956E /* ErrorView.swift in Sources */,
 				AB8C4D3C29DD7F6D00C09C9E /* ImagExt.swift in Sources */,
+				AB0E9EA429E1C0E3002B956E /* NetworkMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

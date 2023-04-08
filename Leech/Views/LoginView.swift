@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject var user = UserAuthVM()
+    @Binding var logged_in: Bool
     
     var body: some View {
         NavigationStack {
@@ -17,7 +18,7 @@ struct LoginView: View {
                 Spacer()
                     .frame(height: 100)
                 AuthInputView(title: "Input Your Login Info", button_label: "Login") {
-                    print("BRUH")
+                    user.login()
                 }
                 Spacer()
                     .frame(height: 20)
@@ -45,12 +46,16 @@ struct LoginView: View {
             }
             .padding()
         }
+        .onAppear {
+           //
+        }
         .environmentObject(user)
+        .alert(user.error_info, isPresented: $user.error_show) {}
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(logged_in: .constant(false))
     }
 }
