@@ -17,6 +17,8 @@
 		AB0E9EA029E1A854002B956E /* LUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9E9F29E1A854002B956E /* LUser.swift */; };
 		AB0E9EA429E1C0E3002B956E /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EA329E1C0E3002B956E /* NetworkMonitor.swift */; };
 		AB0E9EA929E2E402002B956E /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EA829E2E402002B956E /* HomeVM.swift */; };
+		AB0E9EAB29E31E39002B956E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EAA29E31E39002B956E /* ProfileView.swift */; };
+		AB0E9EAD29E32DA3002B956E /* ResetPasword.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EAC29E32DA3002B956E /* ResetPasword.swift */; };
 		AB8C4CEB29DC5FFB00C09C9E /* LeechApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C4CEA29DC5FFB00C09C9E /* LeechApp.swift */; };
 		AB8C4CED29DC5FFB00C09C9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C4CEC29DC5FFB00C09C9E /* ContentView.swift */; };
 		AB8C4CEF29DC5FFC00C09C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB8C4CEE29DC5FFC00C09C9E /* Assets.xcassets */; };
@@ -36,6 +38,8 @@
 		AB0E9E9F29E1A854002B956E /* LUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUser.swift; sourceTree = "<group>"; };
 		AB0E9EA329E1C0E3002B956E /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		AB0E9EA829E2E402002B956E /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
+		AB0E9EAA29E31E39002B956E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		AB0E9EAC29E32DA3002B956E /* ResetPasword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasword.swift; sourceTree = "<group>"; };
 		AB8C4CE729DC5FFB00C09C9E /* Leech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8C4CEA29DC5FFB00C09C9E /* LeechApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeechApp.swift; sourceTree = "<group>"; };
 		AB8C4CEC29DC5FFB00C09C9E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 				AB8C4D4529DF20CA00C09C9E /* VideoView.swift */,
 				AB0E9E8D29E0C195002B956E /* HomeView.swift */,
 				AB0E9E9B29E19DE5002B956E /* AuthInputView.swift */,
+				AB0E9EAA29E31E39002B956E /* ProfileView.swift */,
+				AB0E9EAC29E32DA3002B956E /* ResetPasword.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB0E9EAD29E32DA3002B956E /* ResetPasword.swift in Sources */,
 				AB0E9E8E29E0C195002B956E /* HomeView.swift in Sources */,
 				AB0E9E9A29E19BCE002B956E /* RegisterView.swift in Sources */,
 				AB8C4D4029DF15DF00C09C9E /* LogoView.swift in Sources */,
@@ -248,6 +255,7 @@
 				AB0E9EA029E1A854002B956E /* LUser.swift in Sources */,
 				AB8C4D4629DF20CA00C09C9E /* VideoView.swift in Sources */,
 				AB8C4D3C29DD7F6D00C09C9E /* ImagExt.swift in Sources */,
+				AB0E9EAB29E31E39002B956E /* ProfileView.swift in Sources */,
 				AB0E9EA429E1C0E3002B956E /* NetworkMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

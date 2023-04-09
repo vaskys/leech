@@ -11,8 +11,18 @@ struct HomeView: View {
     @EnvironmentObject var auth: UserAuthVM
     
     var body: some View {
-        VStack {
-            Text("Welcome \(auth.get_logged_user().email)")
+        TabView {
+            VStack {
+                Text("Welcome \(auth.get_logged_user().email)")
+                Text("UID \(auth.get_logged_user().uid)")
+            }.tabItem {
+                Text("Jedna")
+            }
+            
+            ProfileView()
+                .tabItem {
+                    Text("Profile")
+                }
         }
     }
 }
@@ -20,5 +30,6 @@ struct HomeView: View {
 struct HomeVIew_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(UserAuthVM())
     }
 }

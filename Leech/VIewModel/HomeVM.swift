@@ -9,6 +9,4 @@ import Foundation
 
 @MainActor
 final class HomeVM : ObservableObject {
-    
-    
 }

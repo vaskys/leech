@@ -11,13 +11,13 @@ struct RegisterView: View {
     @EnvironmentObject var user:UserAuthVM
     
     var body: some View {
-            VStack {
-                AuthInputView(title: "Enter Your Register Info", button_label: "Register") {
-                    user.register()
-                }
+        VStack {
+            AuthInputView(title: "Enter Your Register Info", button_label: "Register",type: 1) {
+                user.register()
             }
-            .padding()
-            .navigationTitle("Register")
+        }
+        .padding()
+        .navigationTitle("Register")
        
     }
 }

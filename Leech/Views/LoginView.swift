@@ -16,7 +16,7 @@ struct LoginView: View {
                 LogoView()
                 Spacer()
                     .frame(height: 100)
-                AuthInputView(title: "Input Your Login Info", button_label: "Login") {
+                AuthInputView(title: "Input Your Login Info", button_label: "Login",type: 0) {
                     auth.login()
                 }
                 Spacer()
@@ -35,13 +35,25 @@ struct LoginView: View {
                 Spacer()
                     .frame(height: 20)
                 Divider()
-                
-                NavigationLink {
-                    RegisterView()
-                } label: {
-                    Text("Create Account")
-                        .font(.headline)
+               
+                HStack {
+                    NavigationLink {
+                        RegisterView()
+                    } label: {
+                        Text("Create Account")
+                            .font(.headline)
+                    }
+                    Divider()
+                        .frame(maxHeight: 20)
+                    
+                    NavigationLink {
+                        ResetPasword()
+                    } label: {
+                        Text("Reset Password")
+                            .font(.headline)
+                    }
                 }
+                    
             }
             .padding()
         }
@@ -56,5 +68,6 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
+            .environmentObject(UserAuthVM())
     }
 }
