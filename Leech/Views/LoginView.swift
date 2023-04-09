@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import GoogleSignIn
+import GoogleSignInSwift
 
 struct LoginView: View {
     @EnvironmentObject var auth: UserAuthVM
@@ -25,12 +27,9 @@ struct LoginView: View {
                 
                 Text("Login With Socials")
                 HStack(spacing: 30) {
-                    Image(systemName: "circle.fill")
-                        .size(width_i: 50, height_i: 50)
-                    Image(systemName: "circle.fill")
-                        .size(width_i: 50, height_i: 50)
-                    Image(systemName: "circle.fill")
-                        .size(width_i: 50, height_i: 50)
+                    GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .icon, state: .normal)) {
+                        auth.login_google()
+                    }
                 }
                 Spacer()
                     .frame(height: 20)
@@ -49,7 +48,7 @@ struct LoginView: View {
                     NavigationLink {
                         ResetPasword()
                     } label: {
-                        Text("Reset Password")
+                        Text("Forgot Password")
                             .font(.headline)
                     }
                 }

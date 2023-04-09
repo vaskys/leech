@@ -19,6 +19,9 @@
 		AB0E9EA929E2E402002B956E /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EA829E2E402002B956E /* HomeVM.swift */; };
 		AB0E9EAB29E31E39002B956E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EAA29E31E39002B956E /* ProfileView.swift */; };
 		AB0E9EAD29E32DA3002B956E /* ResetPasword.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EAC29E32DA3002B956E /* ResetPasword.swift */; };
+		AB0E9EB029E33553002B956E /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = AB0E9EAF29E33553002B956E /* GoogleSignIn */; };
+		AB0E9EB229E33553002B956E /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB0E9EB129E33553002B956E /* GoogleSignInSwift */; };
+		AB0E9EB529E3380F002B956E /* ViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EB429E3380F002B956E /* ViewControler.swift */; };
 		AB8C4CEB29DC5FFB00C09C9E /* LeechApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C4CEA29DC5FFB00C09C9E /* LeechApp.swift */; };
 		AB8C4CED29DC5FFB00C09C9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C4CEC29DC5FFB00C09C9E /* ContentView.swift */; };
 		AB8C4CEF29DC5FFC00C09C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB8C4CEE29DC5FFC00C09C9E /* Assets.xcassets */; };
@@ -40,6 +43,8 @@
 		AB0E9EA829E2E402002B956E /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		AB0E9EAA29E31E39002B956E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		AB0E9EAC29E32DA3002B956E /* ResetPasword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasword.swift; sourceTree = "<group>"; };
+		AB0E9EB329E33590002B956E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AB0E9EB429E3380F002B956E /* ViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControler.swift; sourceTree = "<group>"; };
 		AB8C4CE729DC5FFB00C09C9E /* Leech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8C4CEA29DC5FFB00C09C9E /* LeechApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeechApp.swift; sourceTree = "<group>"; };
 		AB8C4CEC29DC5FFB00C09C9E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,7 +62,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB0E9EB229E33553002B956E /* GoogleSignInSwift in Frameworks */,
 				AB0E9E9329E0CA94002B956E /* FirebaseAnalyticsSwift in Frameworks */,
+				AB0E9EB029E33553002B956E /* GoogleSignIn in Frameworks */,
 				AB0E9E9629E1924A002B956E /* FirebaseAuth in Frameworks */,
 				AB0E9E9129E0CA94002B956E /* FirebaseAnalytics in Frameworks */,
 			);
@@ -102,6 +109,7 @@
 		AB8C4CE929DC5FFB00C09C9E /* Leech */ = {
 			isa = PBXGroup;
 			children = (
+				AB0E9EB329E33590002B956E /* Info.plist */,
 				AB0E9EA529E1CE8A002B956E /* xD */,
 				AB8C4D3E29DF156300C09C9E /* VIewModel */,
 				AB8C4D3D29DF155A00C09C9E /* Model */,
@@ -142,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				AB8C4D3B29DD7F6D00C09C9E /* ImagExt.swift */,
+				AB0E9EB429E3380F002B956E /* ViewControler.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -183,6 +192,8 @@
 				AB0E9E9029E0CA94002B956E /* FirebaseAnalytics */,
 				AB0E9E9229E0CA94002B956E /* FirebaseAnalyticsSwift */,
 				AB0E9E9529E1924A002B956E /* FirebaseAuth */,
+				AB0E9EAF29E33553002B956E /* GoogleSignIn */,
+				AB0E9EB129E33553002B956E /* GoogleSignInSwift */,
 			);
 			productName = Leech;
 			productReference = AB8C4CE729DC5FFB00C09C9E /* Leech.app */;
@@ -214,6 +225,7 @@
 			mainGroup = AB8C4CDE29DC5FFB00C09C9E;
 			packageReferences = (
 				AB0E9E8F29E0CA94002B956E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				AB0E9EAE29E33553002B956E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = AB8C4CE829DC5FFB00C09C9E /* Products */;
 			projectDirPath = "";
@@ -243,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB0E9EAD29E32DA3002B956E /* ResetPasword.swift in Sources */,
+				AB0E9EB529E3380F002B956E /* ViewControler.swift in Sources */,
 				AB0E9E8E29E0C195002B956E /* HomeView.swift in Sources */,
 				AB0E9E9A29E19BCE002B956E /* RegisterView.swift in Sources */,
 				AB8C4D4029DF15DF00C09C9E /* LogoView.swift in Sources */,
@@ -388,6 +401,7 @@
 				DEVELOPMENT_TEAM = PCZ7B49872;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Leech/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -417,6 +431,7 @@
 				DEVELOPMENT_TEAM = PCZ7B49872;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Leech/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -467,6 +482,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		AB0E9EAE29E33553002B956E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -484,6 +507,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AB0E9E8F29E0CA94002B956E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		AB0E9EAF29E33553002B956E /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0E9EAE29E33553002B956E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		AB0E9EB129E33553002B956E /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0E9EAE29E33553002B956E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

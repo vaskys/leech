@@ -9,6 +9,8 @@ import Foundation
 import Firebase
 import FirebaseAuth
 import SwiftUI
+import GoogleSignIn
+import GoogleSignInSwift
 
 @MainActor
 final class UserAuthVM: ObservableObject {
@@ -21,6 +23,26 @@ final class UserAuthVM: ObservableObject {
     
     var error_info: String = ""
    
+    func login_google() {
+        Task {
+            do {
+                guard let top = UIApplication.topViewController() else { return }
+                let gid_result = try await GIDSignIn.sharedInstance.signIn(withPresenting: top)
+                guard let id_token: String = gid_result.user.idToken?.tokenString else { return }
+                let acces_token: String = gid_result.user.accessToken.tokenString
+                let credentials = GoogleAuthProvider.credential(withIDToken: id_token, accessToken: acces_token)
+                //pridaj google profile udaje 
+                try await Auth.auth().signIn(with: credentials)
+                self.login_current_user()
+            } catch {
+                print(error.localizedDescription)
+                self.error_show = true
+                self.error_info = error.localizedDescription
+            }
+        }
+        
+    }
+    
     func login() {
         Auth.auth().signIn(withEmail: email, password: password) { (result,error) in
             guard let e = error else {
