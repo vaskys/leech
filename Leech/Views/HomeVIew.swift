@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
-    
+    @EnvironmentObject var auth: UserAuthVM
     
     var body: some View {
         VStack {
-            Text("MEGALUL")
-            
+            Text("Welcome \(auth.get_logged_user().email)")
         }
     }
 }

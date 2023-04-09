@@ -9,14 +9,13 @@ import Firebase
 import FirebaseAuth
 
 struct ContentView: View {
-    @State var logged_in: Bool = false
+   @StateObject private var auth = UserAuthVM()
     
     var body: some View {
-        if logged_in {
-            HomeView()
-        } else {
-            LoginView(logged_in: $logged_in)
+        VStack {
+            auth.view_selector
         }
+        .environmentObject(auth)
     }
 }
 
