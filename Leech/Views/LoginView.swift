@@ -60,7 +60,7 @@ struct LoginView: View {
             auth.login_current_user()
         }
         .environmentObject(auth)
-        .alert(auth.error_info, isPresented: $auth.error_show) {}
+        .alert(auth.alert_msg, isPresented: $auth.alert_show) {}
     }
 }
 

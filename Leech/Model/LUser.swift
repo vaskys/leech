@@ -12,23 +12,19 @@ import GoogleSignIn
 final class LUser {
     let uid: String
     let email: String
+    let g_acces_token: String
     
-    let g_acces_token: String?
-    let g_id_token: String?
     
-    init(f_user: User) {
+    init(f_user: User,token: String) {
         self.uid = f_user.uid
         self.email = f_user.email ?? "no@email.xD"
-        
-        self.g_id_token = "no_g_account"
-        self.g_acces_token = "no_g_account"
+        self.g_acces_token = token
     }
     
     init() {
         self.email = "no user logged in "
         self.uid = "-1"
-        self.g_id_token = "no_g_account"
-        self.g_acces_token = "no_g_account"
+        self.g_acces_token = "no google acces token"
     }
     
     

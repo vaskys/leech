@@ -22,6 +22,7 @@
 		AB0E9EB029E33553002B956E /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = AB0E9EAF29E33553002B956E /* GoogleSignIn */; };
 		AB0E9EB229E33553002B956E /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB0E9EB129E33553002B956E /* GoogleSignInSwift */; };
 		AB0E9EB529E3380F002B956E /* ViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EB429E3380F002B956E /* ViewControler.swift */; };
+		AB0E9EB729E4450D002B956E /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EB629E4450D002B956E /* Video.swift */; };
 		AB8C4CEB29DC5FFB00C09C9E /* LeechApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C4CEA29DC5FFB00C09C9E /* LeechApp.swift */; };
 		AB8C4CED29DC5FFB00C09C9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C4CEC29DC5FFB00C09C9E /* ContentView.swift */; };
 		AB8C4CEF29DC5FFC00C09C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB8C4CEE29DC5FFC00C09C9E /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		AB0E9EAC29E32DA3002B956E /* ResetPasword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasword.swift; sourceTree = "<group>"; };
 		AB0E9EB329E33590002B956E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AB0E9EB429E3380F002B956E /* ViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControler.swift; sourceTree = "<group>"; };
+		AB0E9EB629E4450D002B956E /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		AB8C4CE729DC5FFB00C09C9E /* Leech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8C4CEA29DC5FFB00C09C9E /* LeechApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeechApp.swift; sourceTree = "<group>"; };
 		AB8C4CEC29DC5FFB00C09C9E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0E9E9F29E1A854002B956E /* LUser.swift */,
+				AB0E9EB629E4450D002B956E /* Video.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				AB0E9E9829E19675002B956E /* UserAuthVM.swift in Sources */,
 				AB8C4CEB29DC5FFB00C09C9E /* LeechApp.swift in Sources */,
 				AB0E9E9C29E19DE5002B956E /* AuthInputView.swift in Sources */,
+				AB0E9EB729E4450D002B956E /* Video.swift in Sources */,
 				AB0E9EA029E1A854002B956E /* LUser.swift in Sources */,
 				AB8C4D4629DF20CA00C09C9E /* VideoView.swift in Sources */,
 				AB8C4D3C29DD7F6D00C09C9E /* ImagExt.swift in Sources */,

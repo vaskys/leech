@@ -15,14 +15,45 @@ struct HomeView: View {
             VStack {
                 Text("Welcome \(auth.get_logged_user().email)")
                 Text("UID \(auth.get_logged_user().uid)")
-            }.tabItem {
-                Text("Jedna")
+                
+                 Button {
+                let url = URL(string: "https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet&mine=true&key=AIzaSyAXQRc8OlWQf_fKuuE4bNpa72XviTNeUUI&access_token=\(auth.get_logged_user().g_acces_token)")!
+
+                     
+                let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+                    guard let data = data else { return }
+                    print(String(data: data, encoding: .utf8)!)
+                }
+
+                task.resume()
+                     print("OK")
+                     print(auth.get_logged_user().g_acces_token)
+            } label: {
+                Text("HTTP")
             }
+            }.tabItem {
+                VStack {
+                    Image(systemName: "house")
+                    Text("Home")
+                }
+            }
+            .multilineTextAlignment(.center)
             
             ProfileView()
                 .tabItem {
-                    Text("Profile")
+                    VStack {
+                        Image(systemName: "gear")
+                        Text("Settings")
+                    }
                 }
+            
+           
+        }
+        .background(Color.red)
+        .tabViewStyle(.automatic)
+        .onAppear {
+            
+
         }
     }
 }

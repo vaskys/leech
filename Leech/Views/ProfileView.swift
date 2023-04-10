@@ -20,7 +20,7 @@ struct ProfileView: View {
                 Text("Logout")
             }
         }
-        .alert(auth.error_info, isPresented: $auth.error_show) {}
+        .alert(auth.alert_msg, isPresented: $auth.alert_show) {}
     }
 }
 
