@@ -19,7 +19,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct LeechApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject var network_monitor = NetworkMonitor()
+    
    
     var body: some Scene {
         WindowGroup {

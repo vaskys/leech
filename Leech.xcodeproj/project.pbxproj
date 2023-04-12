@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB0E9E8E29E0C195002B956E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9E8D29E0C195002B956E /* HomeView.swift */; };
 		AB0E9E9129E0CA94002B956E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AB0E9E9029E0CA94002B956E /* FirebaseAnalytics */; };
 		AB0E9E9329E0CA94002B956E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB0E9E9229E0CA94002B956E /* FirebaseAnalyticsSwift */; };
 		AB0E9E9629E1924A002B956E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AB0E9E9529E1924A002B956E /* FirebaseAuth */; };
@@ -22,7 +21,11 @@
 		AB0E9EB029E33553002B956E /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = AB0E9EAF29E33553002B956E /* GoogleSignIn */; };
 		AB0E9EB229E33553002B956E /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB0E9EB129E33553002B956E /* GoogleSignInSwift */; };
 		AB0E9EB529E3380F002B956E /* ViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EB429E3380F002B956E /* ViewControler.swift */; };
-		AB0E9EB729E4450D002B956E /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EB629E4450D002B956E /* Video.swift */; };
+		AB0E9EB929E4697A002B956E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EB829E4697A002B956E /* HomeView.swift */; };
+		AB0E9EBB29E46A1F002B956E /* YT.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EBA29E46A1F002B956E /* YT.swift */; };
+		AB0E9EBD29E6D343002B956E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EBC29E6D343002B956E /* Alert.swift */; };
+		AB0E9EC329E6E883002B956E /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EC229E6E883002B956E /* RootView.swift */; };
+		AB0E9EC529E6F26B002B956E /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EC429E6F26B002B956E /* Video.swift */; };
 		AB8C4CEB29DC5FFB00C09C9E /* LeechApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C4CEA29DC5FFB00C09C9E /* LeechApp.swift */; };
 		AB8C4CED29DC5FFB00C09C9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C4CEC29DC5FFB00C09C9E /* ContentView.swift */; };
 		AB8C4CEF29DC5FFC00C09C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB8C4CEE29DC5FFC00C09C9E /* Assets.xcassets */; };
@@ -35,7 +38,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AB0E9E8D29E0C195002B956E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AB0E9E9729E19675002B956E /* UserAuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthVM.swift; sourceTree = "<group>"; };
 		AB0E9E9929E19BCE002B956E /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		AB0E9E9B29E19DE5002B956E /* AuthInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInputView.swift; sourceTree = "<group>"; };
@@ -46,7 +48,11 @@
 		AB0E9EAC29E32DA3002B956E /* ResetPasword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasword.swift; sourceTree = "<group>"; };
 		AB0E9EB329E33590002B956E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AB0E9EB429E3380F002B956E /* ViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControler.swift; sourceTree = "<group>"; };
-		AB0E9EB629E4450D002B956E /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		AB0E9EB829E4697A002B956E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		AB0E9EBA29E46A1F002B956E /* YT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YT.swift; sourceTree = "<group>"; };
+		AB0E9EBC29E6D343002B956E /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		AB0E9EC229E6E883002B956E /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		AB0E9EC429E6F26B002B956E /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		AB8C4CE729DC5FFB00C09C9E /* Leech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8C4CEA29DC5FFB00C09C9E /* LeechApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeechApp.swift; sourceTree = "<group>"; };
 		AB8C4CEC29DC5FFB00C09C9E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -140,10 +146,11 @@
 				AB8C4D3629DD711D00C09C9E /* LoginView.swift */,
 				AB8C4D3F29DF15DF00C09C9E /* LogoView.swift */,
 				AB8C4D4529DF20CA00C09C9E /* VideoView.swift */,
-				AB0E9E8D29E0C195002B956E /* HomeView.swift */,
 				AB0E9E9B29E19DE5002B956E /* AuthInputView.swift */,
 				AB0E9EAA29E31E39002B956E /* ProfileView.swift */,
 				AB0E9EAC29E32DA3002B956E /* ResetPasword.swift */,
+				AB0E9EB829E4697A002B956E /* HomeView.swift */,
+				AB0E9EC229E6E883002B956E /* RootView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -161,7 +168,9 @@
 			isa = PBXGroup;
 			children = (
 				AB0E9E9F29E1A854002B956E /* LUser.swift */,
-				AB0E9EB629E4450D002B956E /* Video.swift */,
+				AB0E9EBA29E46A1F002B956E /* YT.swift */,
+				AB0E9EBC29E6D343002B956E /* Alert.swift */,
+				AB0E9EC429E6F26B002B956E /* Video.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -259,16 +268,19 @@
 			files = (
 				AB0E9EAD29E32DA3002B956E /* ResetPasword.swift in Sources */,
 				AB0E9EB529E3380F002B956E /* ViewControler.swift in Sources */,
-				AB0E9E8E29E0C195002B956E /* HomeView.swift in Sources */,
+				AB0E9EBB29E46A1F002B956E /* YT.swift in Sources */,
 				AB0E9E9A29E19BCE002B956E /* RegisterView.swift in Sources */,
+				AB0E9EBD29E6D343002B956E /* Alert.swift in Sources */,
 				AB8C4D4029DF15DF00C09C9E /* LogoView.swift in Sources */,
+				AB0E9EC329E6E883002B956E /* RootView.swift in Sources */,
 				AB0E9EA929E2E402002B956E /* HomeVM.swift in Sources */,
 				AB8C4D3729DD711D00C09C9E /* LoginView.swift in Sources */,
+				AB0E9EC529E6F26B002B956E /* Video.swift in Sources */,
 				AB8C4CED29DC5FFB00C09C9E /* ContentView.swift in Sources */,
 				AB0E9E9829E19675002B956E /* UserAuthVM.swift in Sources */,
+				AB0E9EB929E4697A002B956E /* HomeView.swift in Sources */,
 				AB8C4CEB29DC5FFB00C09C9E /* LeechApp.swift in Sources */,
 				AB0E9E9C29E19DE5002B956E /* AuthInputView.swift in Sources */,
-				AB0E9EB729E4450D002B956E /* Video.swift in Sources */,
 				AB0E9EA029E1A854002B956E /* LUser.swift in Sources */,
 				AB8C4D4629DF20CA00C09C9E /* VideoView.swift in Sources */,
 				AB8C4D3C29DD7F6D00C09C9E /* ImagExt.swift in Sources */,

@@ -9,10 +9,14 @@ import SwiftUI
 
 struct ResetPasword: View {
     @EnvironmentObject var user:UserAuthVM
+    @EnvironmentObject var alerty: Alert
+    
     var body: some View {
         VStack {
             AuthInputView(title: "Enter Your Email", button_label: "Reset",type: -1) {
-                user.reset_password()
+                user.reset_password { (msg: String) in
+                    alerty.pop_alert(msg: msg)
+                }
             }
         }
         .padding()
@@ -24,5 +28,6 @@ struct ResetPasword_Previews: PreviewProvider {
     static var previews: some View {
         ResetPasword()
             .environmentObject(UserAuthVM())
+            .environmentObject(Alert())
     }
 }

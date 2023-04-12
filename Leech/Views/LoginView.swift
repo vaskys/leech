@@ -11,6 +11,7 @@ import GoogleSignInSwift
 
 struct LoginView: View {
     @EnvironmentObject var auth: UserAuthVM
+    @EnvironmentObject var alerty: Alert
     
     var body: some View {
         NavigationStack {
@@ -19,7 +20,9 @@ struct LoginView: View {
                 Spacer()
                     .frame(height: 100)
                 AuthInputView(title: "Input Your Login Info", button_label: "Login",type: 0) {
-                    auth.login()
+                    auth.login { (msg: String) in
+                        alerty.pop_alert(msg: msg)
+                    }
                 }
                 Spacer()
                     .frame(height: 20)
@@ -28,7 +31,9 @@ struct LoginView: View {
                 Text("Login With Socials")
                 HStack(spacing: 30) {
                     GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .icon, state: .normal)) {
-                        auth.login_google()
+                        auth.login_google { (msg: String) in
+                            alerty.pop_alert(msg: msg)
+                        }
                     }
                 }
                 Spacer()
@@ -60,7 +65,6 @@ struct LoginView: View {
             auth.login_current_user()
         }
         .environmentObject(auth)
-        .alert(auth.alert_msg, isPresented: $auth.alert_show) {}
     }
 }
 

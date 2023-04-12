@@ -9,18 +9,20 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var auth: UserAuthVM
+    @EnvironmentObject var alerty: Alert
     
     var body: some View {
         VStack {
             Button() {
                 Task {
-                    try auth.logout()
+                    try auth.logout { (msg: String) in
+                        alerty.pop_alert(msg: msg)
+                    }
                 }
             } label: {
                 Text("Logout")
             }
         }
-        .alert(auth.alert_msg, isPresented: $auth.alert_show) {}
     }
 }
 
@@ -28,5 +30,6 @@ struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
             .environmentObject(UserAuthVM())
+            .environmentObject(Alert())
     }
 }

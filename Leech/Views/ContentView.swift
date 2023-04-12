@@ -9,14 +9,21 @@ import Firebase
 import FirebaseAuth
 
 struct ContentView: View {
-   @StateObject private var auth = UserAuthVM()
+    @StateObject private var auth = UserAuthVM()
+    @StateObject private var alerty =  Alert()
     
     var body: some View {
         VStack {
             auth.view_selector
         }
         .environmentObject(auth)
+        .environmentObject(alerty)
+        
+        .alert(alerty.get_alert_msg(), isPresented: $alerty.show_alert) {}
     }
+    
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

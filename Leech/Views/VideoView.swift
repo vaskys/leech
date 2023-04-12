@@ -10,11 +10,13 @@ import SwiftUI
 import WebKit
 
 struct YouTubeView: UIViewRepresentable {
+    let id:String
+    
     func makeUIView(context: Context) ->  WKWebView {
         return WKWebView()
     }
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        guard let demoURL = URL(string: "https://invidious.snopyta.org/embed/i1qdJe9HQS8") else { return }
+        guard let demoURL = URL(string: "https://invidious.snopyta.org/embed/\(id)") else { return }
         uiView.scrollView.isScrollEnabled = false
         uiView.load(URLRequest(url: demoURL))
     }
@@ -24,9 +26,9 @@ struct YouTubeView: UIViewRepresentable {
 
 struct VideoView: View {
     var body: some View {
-        YouTubeView()
-                                   .frame(width: 300, height: 300)
-                                   .padding()
+        YouTubeView(id: "xd")
+            .frame(width: 300, height: 300)
+            .padding()
     }
 }
 

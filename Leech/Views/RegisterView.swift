@@ -9,11 +9,14 @@ import SwiftUI
 
 struct RegisterView: View {
     @EnvironmentObject var user:UserAuthVM
+    @EnvironmentObject var alerty: Alert
     
     var body: some View {
         VStack {
             AuthInputView(title: "Enter Your Register Info", button_label: "Register",type: 1) {
-                user.register()
+                user.register { (msg: String) in
+                    alerty.pop_alert(msg: msg)
+                }
             }
         }
         .padding()
@@ -26,5 +29,6 @@ struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
         RegisterView()
             .environmentObject(UserAuthVM())
+            .environmentObject(Alert())
     }
 }

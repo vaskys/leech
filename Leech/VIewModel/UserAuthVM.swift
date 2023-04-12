@@ -17,13 +17,11 @@ final class UserAuthVM: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var password_check: String = ""
-    @Published var alert_show: Bool = false
-    
-    @Published var logged_user: LUser?
-    
-    var alert_msg: String = ""
    
-    func login_google() {
+    @Published private var logged_in: Bool = false
+    
+   
+    func login_google(alert: @escaping (String) -> Void)  {
         Task {
             do {
                 guard let top = UIApplication.topViewController() else { return }
@@ -31,99 +29,87 @@ final class UserAuthVM: ObservableObject {
                 guard let id_token: String = gid_result.user.idToken?.tokenString else { return }
                 let acces_token: String = gid_result.user.accessToken.tokenString
                 let credentials = GoogleAuthProvider.credential(withIDToken: id_token, accessToken: acces_token)
-                //pridaj google profile udaje
-                print("LULE")
-                print("acces token \(acces_token) \n")
-                print("id token \(id_token) \n")
-                
                 try await Auth.auth().signIn(with: credentials)
                 self.login_current_user()
                 
             } catch {
                 print(error.localizedDescription)
-                self.alert_show = true
-                self.alert_msg = error.localizedDescription
+                alert(error.localizedDescription)
             }
         }
     }
     
-    func login() {
+    func login(alert: @escaping (String) -> Void) {
         Task {
             do {
                 try await Auth.auth().signIn(withEmail: email, password: password)
                 self.login_current_user()
             } catch {
-                print(error)
-                self.alert_show = true
-                self.alert_msg = error.localizedDescription
+                print(error.localizedDescription)
+                alert(error.localizedDescription)
             }
         }
     }
     
-    func register() {
+    func register(alert: @escaping (String) -> Void ) {
         if self.password != self.password_check {
-            self.alert_msg = "password dont match"
-            self.alert_show = true
+            alert("Passwords dont match")
             self.clear()
             return
         }
         Task {
             do {
                 try await Auth.auth().createUser(withEmail: email, password: password)
-                self.login()
+                self.login() { msg in
+                   print(msg)
+                }
             } catch {
                 print(error.localizedDescription)
-                self.alert_show = true
-                self.alert_msg = error.localizedDescription
+                alert(error.localizedDescription)
             }
         }
     }
     
     func login_current_user()  {
-        guard let user = Auth.auth().currentUser else { return }
+        guard let _ = Auth.auth().currentUser else { return }
         
-        var g_access_token:String = ""
         Task {
             do {
                 try await GIDSignIn.sharedInstance.restorePreviousSignIn()
-                g_access_token = GIDSignIn.sharedInstance.currentUser!.accessToken.tokenString
             } catch {
                 print(error.localizedDescription)
             }
-            logged_user = LUser(f_user: user,token: g_access_token)
+            logged_in = true
         }
     }
     
-    func get_logged_user() -> LUser {
-        guard let user = logged_user else {
-            return LUser()
-        }
-        return user
+    func is_logged_in() -> Bool {
+        guard let _ = Auth.auth().currentUser else { return false }
+        return true
     }
     
-    func logout() throws {
+
+    func logout(alert: (String) -> Void) throws {
         do {
             GIDSignIn.sharedInstance.signOut()
             try Auth.auth().signOut()
-            logged_user = nil
+            logged_in = false
         } catch {
             print(error.localizedDescription)
-            self.alert_show = true
-            self.alert_msg = error.localizedDescription
+            alert(error.localizedDescription)
+        
         }
     }
     
-    func reset_password() {
+    func reset_password(alert: @escaping (String) -> Void) {
         Task {
             do {
                 try await Auth.auth().sendPasswordReset(withEmail: email)
-                self.alert_show = true
-                self.alert_msg = "Recovery Link na Email"
+                alert("Recovery Link na Email")
                 
             } catch {
                 print(error.localizedDescription)
-                self.alert_show = true
-                self.alert_msg = error.localizedDescription
+                alert(error.localizedDescription)
             }
         }
     }
@@ -136,8 +122,8 @@ final class UserAuthVM: ObservableObject {
     
     
     @ViewBuilder var view_selector: some View {
-        if self.logged_user != nil {
-           HomeView()
+        if self.logged_in {
+           RootView()
         } else {
             LoginView()
         }
