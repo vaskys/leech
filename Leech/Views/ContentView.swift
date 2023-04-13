@@ -18,8 +18,10 @@ struct ContentView: View {
         }
         .environmentObject(auth)
         .environmentObject(alerty)
-        
         .alert(alerty.get_alert_msg(), isPresented: $alerty.show_alert) {}
+        .onAppear {
+            RConfig.config.fetch_config()
+        }
     }
     
     

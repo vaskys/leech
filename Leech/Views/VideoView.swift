@@ -13,7 +13,11 @@ struct YouTubeView: UIViewRepresentable {
     let id:String
     
     func makeUIView(context: Context) ->  WKWebView {
-        return WKWebView()
+        let configuration = WKWebViewConfiguration()
+        configuration.allowsInlineMediaPlayback = true
+        configuration.allowsPictureInPictureMediaPlayback = true
+        let webView = WKWebView(frame: .zero, configuration: configuration)
+           return webView
     }
     func updateUIView(_ uiView: WKWebView, context: Context) {
         guard let demoURL = URL(string: "https://invidious.snopyta.org/embed/\(id)") else { return }

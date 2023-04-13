@@ -84,10 +84,13 @@ final class UserAuthVM: ObservableObject {
     }
     
     func is_logged_in() -> Bool {
-        guard let _ = Auth.auth().currentUser else { return false }
+        guard let _ = Auth.auth().currentUser else {
+            self.logged_in = false
+            return false
+        }
+        self.logged_in = true
         return true
     }
-    
 
     func logout(alert: (String) -> Void) throws {
         do {

@@ -20,7 +20,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct LeechApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-   
     var body: some Scene {
         WindowGroup {
             ContentView()
