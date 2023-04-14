@@ -22,6 +22,7 @@ struct ContentView: View {
         .onAppear {
             RConfig.config.fetch_config()
         }
+        
     }
     
     
