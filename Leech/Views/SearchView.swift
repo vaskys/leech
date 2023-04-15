@@ -1,22 +1,31 @@
 //
-//  HomeView.swift
+//  SearchView.swift
 //  Leech
 //
-//  Created by Samo Vaský on 10/04/2023.
+//  Created by Samo Vaský on 15/04/2023.
 //
-import SwiftUI
-import WebKit
 
-struct HomeView: View {
+import SwiftUI
+
+struct SearchView: View {
+    @State var search_string: String = ""
     @EnvironmentObject var inv_api: IApi
-    @EnvironmentObject var auth: UserAuthVM
-    @EnvironmentObject var alerty: Alert
     
     var body: some View {
         NavigationStack() {
-            ScrollView(.vertical,showsIndicators: true){
+            HStack {
+                TextField("Hladaj", text: $search_string)
+                Image(systemName: "magnifyingglass")
+                    .onTapGesture {
+                        inv_api.search(name: search_string)
+                    }
+            }
+            .padding()
+            Text("Search Results")
+                .font(.headline.bold())
+            ScrollView(.vertical,showsIndicators: true) {
                 VStack(spacing: 0) {
-                    ForEach(inv_api.videos) { video in
+                    ForEach(inv_api.search_videos) { video in
                         NavigationLink {
                             VideoView(video: video)
                         } label: {
@@ -35,20 +44,12 @@ struct HomeView: View {
                     }
                 }
             }
-            .navigationTitle("Trending")
-        }
-        .onAppear {
-            inv_api.get_trending_videos { (msg:String) in
-                alerty.pop_alert(msg: msg)
-            }
         }
     }
 }
 
-//struct HomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView()
-//            .environmentObject(Alert())
-//            .environmentObject(UserAuthVM())
-//    }
-//}
+struct SearchView_Previews: PreviewProvider {
+    static var previews: some View {
+        SearchView()
+    }
+}

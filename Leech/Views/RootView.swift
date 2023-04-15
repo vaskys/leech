@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct RootView: View {
+    @StateObject var inv_api = IApi()
+    
     var body: some View {
         TabView {
             HomeView()
                 .tabItem {
                     Label("Home",systemImage: "house")
+                }
+            SearchView()
+                .tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
                 }
             
             ProfileView()
@@ -20,6 +26,8 @@ struct RootView: View {
                     Label("Settings", systemImage: "gear")
                 }
         }
+        .environmentObject(inv_api)
+        
     }
 }
 

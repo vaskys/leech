@@ -11,16 +11,23 @@ struct AImageView: View {
     let url_string: String
     let overlay_string: String
     
+    let width: CGFloat?
+    let height: CGFloat?
+    let max_width: CGFloat?
+    let max_height: CGFloat?
+    
     var body: some View {
         AsyncImage(url: URL(string: url_string)) { data in
             if let img = data.image {
-            img
+                img
                 .resizable()
-                .frame(height: 250)
-                .frame(maxWidth: .infinity)
+                .frame(width: width, height: height)
+                .frame(maxWidth: max_width,maxHeight: max_height)
+                
                 .overlay(alignment: .bottomTrailing) {
                     Text(overlay_string)
                         .foregroundColor(.white)
+                        .background(Color.black.opacity(0.5))
                         .padding()
                 }
             } else if data.error != nil {
@@ -36,8 +43,4 @@ struct AImageView: View {
     }
 }
 
-struct AImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        AImageView(url_string: "",overlay_string: "")
-    }
-}
+

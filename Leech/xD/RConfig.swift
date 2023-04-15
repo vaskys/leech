@@ -16,6 +16,10 @@ class RConfig {
     
     public static let config = RConfig();
     
+    static func secondsToHoursMinutesSeconds(_ seconds: Int) -> (Int, Int, Int) {
+        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+    }
+    
     init() {
         self.api_key = "AIzaSyAXQRc8OlWQf_fKuuE4bNpa72XviTNeUUI";
         self.fall_back_api_key = "AIzaSyALyayVGqqcQXG9CAjdA5Zgl_LZG7sfyeU";
