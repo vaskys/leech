@@ -36,34 +36,40 @@ struct VideoView: View {
     var body: some View {
         VStack {
             EmbedVideoView(id: video.video_id)
-                .frame(height: 300)
+                .frame(width:420,height: 300)
             HStack {
                 Text(video.autor)
                 Text("Views \(video.views)")
             }
-            Text(video.published)
             Divider()
             Text("Recommended")
                 .frame(alignment: .bottomTrailing)
                 .font(.title.bold())
-            ScrollView(.horizontal) {
+            ScrollView(.horizontal,showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach(video.recommended) { r in
                         NavigationLink {
                             VideoView(video: r)
                         } label: {
-                            AImageView(url_string: r.t_medium, overlay_string: "", width: 250, height: 250, max_width: nil, max_height: nil)
+                            VStack {
+                                AImageView(url_string: r.t_medium, overlay_string: "", width: 250, height: 180, max_width: nil, max_height: nil)
+                                Text(r.title)
+                                HStack {
+                                    Text(r.autor).font(.caption)
+                                    Divider().frame(height: 10)
+                                    Text(r.views).font(.caption)
+                                    
+                                }
+                            }
+                            .padding(.leading)
+                            .frame(width: 250)
                         }
                     }
                 }
-                
             }
-            .frame(height: 250)
-            .backgroundStyle(.red)
-            Spacer()
-            Spacer()
         }
         .navigationTitle(video.title).scaledToFit()
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             if video.empty_recommended() {
                 inv_api.video_next_data(video: video)

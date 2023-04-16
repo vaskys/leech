@@ -20,12 +20,17 @@ struct RootView: View {
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
-            
+           
+            LibView()
+                .tabItem {
+                    Label("Library", systemImage: "folder")
+                }
             ProfileView()
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
         }
+        .tableStyle(.inset)
         .environmentObject(inv_api)
         
     }

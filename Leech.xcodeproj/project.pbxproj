@@ -35,6 +35,9 @@
 		AB0E9EF529EAC0D8002B956E /* IQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EF429EAC0D8002B956E /* IQuality.swift */; };
 		AB0E9EF729EAC1B9002B956E /* ISearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EF629EAC1B9002B956E /* ISearch.swift */; };
 		AB0E9EF929EAD6BF002B956E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EF829EAD6BF002B956E /* SearchView.swift */; };
+		AB0E9EFC29EC54FF002B956E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AB0E9EFB29EC54FF002B956E /* Kingfisher */; };
+		AB0E9EFE29EC575B002B956E /* KindFIsherExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EFD29EC575B002B956E /* KindFIsherExt.swift */; };
+		AB0E9F0029EC6625002B956E /* LibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9EFF29EC6625002B956E /* LibView.swift */; };
 		AB8C4CEB29DC5FFB00C09C9E /* LeechApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C4CEA29DC5FFB00C09C9E /* LeechApp.swift */; };
 		AB8C4CED29DC5FFB00C09C9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C4CEC29DC5FFB00C09C9E /* ContentView.swift */; };
 		AB8C4CEF29DC5FFC00C09C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB8C4CEE29DC5FFC00C09C9E /* Assets.xcassets */; };
@@ -69,6 +72,8 @@
 		AB0E9EF429EAC0D8002B956E /* IQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQuality.swift; sourceTree = "<group>"; };
 		AB0E9EF629EAC1B9002B956E /* ISearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISearch.swift; sourceTree = "<group>"; };
 		AB0E9EF829EAD6BF002B956E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		AB0E9EFD29EC575B002B956E /* KindFIsherExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KindFIsherExt.swift; sourceTree = "<group>"; };
+		AB0E9EFF29EC6625002B956E /* LibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibView.swift; sourceTree = "<group>"; };
 		AB8C4CE729DC5FFB00C09C9E /* Leech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8C4CEA29DC5FFB00C09C9E /* LeechApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeechApp.swift; sourceTree = "<group>"; };
 		AB8C4CEC29DC5FFB00C09C9E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +95,7 @@
 				AB0E9E9329E0CA94002B956E /* FirebaseAnalyticsSwift in Frameworks */,
 				AB0E9EB029E33553002B956E /* GoogleSignIn in Frameworks */,
 				AB0E9EE229E879BB002B956E /* FirebaseRemoteConfigSwift in Frameworks */,
+				AB0E9EFC29EC54FF002B956E /* Kingfisher in Frameworks */,
 				AB0E9EE029E879BB002B956E /* FirebaseRemoteConfig in Frameworks */,
 				AB0E9E9629E1924A002B956E /* FirebaseAuth in Frameworks */,
 				AB0E9E9129E0CA94002B956E /* FirebaseAnalytics in Frameworks */,
@@ -184,6 +190,7 @@
 				AB0E9EC229E6E883002B956E /* RootView.swift */,
 				AB0E9EEC29E99690002B956E /* AImageView.swift */,
 				AB0E9EF829EAD6BF002B956E /* SearchView.swift */,
+				AB0E9EFF29EC6625002B956E /* LibView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,6 +200,7 @@
 			children = (
 				AB8C4D3B29DD7F6D00C09C9E /* ImagExt.swift */,
 				AB0E9EB429E3380F002B956E /* ViewControler.swift */,
+				AB0E9EFD29EC575B002B956E /* KindFIsherExt.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -241,6 +249,7 @@
 				AB0E9EB129E33553002B956E /* GoogleSignInSwift */,
 				AB0E9EDF29E879BB002B956E /* FirebaseRemoteConfig */,
 				AB0E9EE129E879BB002B956E /* FirebaseRemoteConfigSwift */,
+				AB0E9EFB29EC54FF002B956E /* Kingfisher */,
 			);
 			productName = Leech;
 			productReference = AB8C4CE729DC5FFB00C09C9E /* Leech.app */;
@@ -274,6 +283,7 @@
 				AB0E9E8F29E0CA94002B956E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				AB0E9EAE29E33553002B956E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				AB0E9EE729E993FC002B956E /* XCRemoteSwiftPackageReference "Nuke" */,
+				AB0E9EFA29EC54FF002B956E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = AB8C4CE829DC5FFB00C09C9E /* Products */;
 			projectDirPath = "";
@@ -302,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB0E9F0029EC6625002B956E /* LibView.swift in Sources */,
 				AB0E9EAD29E32DA3002B956E /* ResetPasword.swift in Sources */,
 				AB0E9EB529E3380F002B956E /* ViewControler.swift in Sources */,
 				AB0E9E9A29E19BCE002B956E /* RegisterView.swift in Sources */,
@@ -328,6 +339,7 @@
 				AB0E9EF529EAC0D8002B956E /* IQuality.swift in Sources */,
 				AB0E9EE629E9757A002B956E /* InvPopular.swift in Sources */,
 				AB0E9EAB29E31E39002B956E /* ProfileView.swift in Sources */,
+				AB0E9EFE29EC575B002B956E /* KindFIsherExt.swift in Sources */,
 				AB0E9EA429E1C0E3002B956E /* NetworkMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,6 +569,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		AB0E9EFA29EC54FF002B956E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -594,6 +614,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AB0E9E8F29E0CA94002B956E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseRemoteConfigSwift;
+		};
+		AB0E9EFB29EC54FF002B956E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0E9EFA29EC54FF002B956E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
