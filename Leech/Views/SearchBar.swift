@@ -49,9 +49,13 @@ struct SearchBar: View {
                                                             inv_api.search(name: sug.suggestions[i])
                                                             edit = false
                                                         } label: {
-                                                            Text(sug.suggestions[i])
-                                                                .foregroundColor(.primary)
-                                                                .multilineTextAlignment(.leading)
+                                                            HStack {
+                                                                Text(sug.suggestions[i])
+                                                                    .foregroundColor(.primary)
+                                                                    .multilineTextAlignment(.leading)
+                                                                    .padding(.leading,30)
+                                                                Spacer()
+                                                            }
                                                         }
                                                     }
                                                     else {
