@@ -9,30 +9,35 @@ import SwiftUI
 
 struct RootView: View {
     @StateObject var inv_api = IApi()
+    @EnvironmentObject var alerty: Alert
     
     var body: some View {
         TabView {
             HomeView()
                 .tabItem {
-                    Label("Home",systemImage: "house")
+                    Label("Domov",systemImage: "house")
                 }
             SearchView()
                 .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
+                    Label("Hľadaj", systemImage: "magnifyingglass")
                 }
            
             LibView()
                 .tabItem {
-                    Label("Library", systemImage: "folder")
+                    Label("Knižnica", systemImage: "folder")
                 }
             ProfileView()
                 .tabItem {
-                    Label("Settings", systemImage: "gear")
+                    Label("Nastavenia", systemImage: "gear")
                 }
         }
         .tableStyle(.inset)
         .environmentObject(inv_api)
-        
+        .sheet(isPresented: $inv_api.present_video) {
+            VideoView()
+                .environmentObject(inv_api)
+                .environmentObject(alerty)
+        }
     }
 }
 

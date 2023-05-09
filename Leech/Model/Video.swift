@@ -2,98 +2,57 @@
 //  Video.swift
 //  Leech
 //
-//  Created by Samo Vaský on 12/04/2023.
+//  Created by Samo Vaský on 09/05/2023.
 //
 
 import Foundation
 
-class Video: Identifiable, ObservableObject {
+struct Suggestion: Codable {
+    var query: String
+    var suggestions: [String]
+    
+}
+
+
+struct Thumbnails: Codable {
+    var quality: String
+    var url: String
+    var width: Int32
+    var height: Int32
+    
+    enum CodingKeys: String, CodingKey {
+        case quality
+        case url
+        case width
+        case height
+    }
+}
+
+struct Video : Codable, Identifiable {
     var id = UUID()
+    var title: String = ""
+    var videoId: String = ""
     
-    var video_id: String = "xd"
-    var title: String = "xd"
-    var views = "xd"
-    var duration = "xd"
-    var t_small = "xd"
-    var t_medium = "xd"
-    var t_high = "xd"
-    var desc = "xd"
-    var autor = "xd"
-    var auto_id = "xd"
-    var likes = 0
-    var published = "xd"
+    var lengthSeconds: Int32 = 0
+    var viewCount: Int64 = 0
+    var author: String = ""
+    var authorId: String = ""
     
+    var videoThumbnails: [Thumbnails]
+    var recommendedVideos: [Video]? = nil
     
-    @Published var recommended: [Video] = []
-    
-   
-    init(data: IPopularElement) {
-        if data.type == TypeEnum.video {
-            self.video_id = data.videoId
-            self.title = data.title
-            self.views = data.viewCount.description
-            self.desc = data.description
-            self.autor = data.author
-            self.auto_id = data.authorId
-            self.duration = data.lengthSeconds.description
-            self.published = data.publishedText.description
-            
-            for thumb in data.videoThumbnails {
-                if thumb.quality == Quality.medium {
-                    self.t_medium = thumb.url!
-                }
-            }
-        }
+    enum CodingKeys: String, CodingKey {
+        case title
+        case videoId
+        case lengthSeconds
+        case viewCount
+        case author
+        case authorId
+        case videoThumbnails
+        case recommendedVideos
     }
     
-    init(data: ISearchElement) {
-        if data.type == "video" {
-            self.video_id = data.videoId
-            self.title = data.title
-            self.views = data.viewCount.description
-            self.desc = data.description
-            self.autor = data.author
-            self.auto_id = data.authorId
-            self.duration = data.lengthSeconds.description
-            self.published = data.publishedText.description
-            
-            for thumb in data.videoThumbnails {
-                if thumb.quality == Quality.medium {
-                    self.t_medium = thumb.url!
-                }
-            }
-        }
-    }
-    
-    init(data: RecommendedVideo) {
-        self.video_id = data.videoId
-        self.title = data.title
-        self.views = data.viewCount.description
-        self.autor = data.author
-        self.auto_id = data.authorId
-        self.duration = data.lengthSeconds.description
-        
-        for thumb in data.videoThumbnails {
-            if thumb.quality == Quality.medium {
-                self.t_medium = thumb.url!
-            }
-        }
-        
-    }
-    
-    func extra_data(data: IVideo) {
-        if data.type == "video" {
-            self.likes = data.likeCount
-            for r in data.recommendedVideos {
-                let r_video = Video(data: r)
-                recommended.append(r_video)
-            }
-        }
-    }
-   
-    
-    
-    func empty_recommended() -> Bool {
-        return recommended.isEmpty
+    func get_thumb() -> String {
+        return videoThumbnails[0].url
     }
 }

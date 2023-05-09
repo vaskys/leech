@@ -11,28 +11,44 @@ import SwiftUI
 
 @MainActor
 final class IApi: ObservableObject {
-    @Published var videos: [Video] = []
+    @Published var trending_videos: [Video] = []
     @Published var search_videos: [Video] = []
+    @Published var search_suggestion: Suggestion? = nil
+    
+    @Published var present_video = false
+    @Published var selected_video: Video? = nil
+    @Published var selected_segment = 0
     
     @Published var loading_data:Bool = false
+    var page = 1
+    var active_search = ""
+    
+    
     private let base_url: String = "https://youtube.googleapis.com/youtube/v3/"
     
+    func reset_search() {
+        page = 1
+        active_search = ""
+    }
     
-    func search(name: String) {
-        search_videos.removeAll()
+    func get_search_sugg(text: String) {
+        let url_string: String = "https://invidious.snopyta.org/api/v1/search/suggestions?q=\(text)"
+        let final_string = url_string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
-        let url_string: String = "https://invidious.snopyta.org/api/v1/search?q=\(name)&type=video&region=SK"
-        guard let url = URL(string: url_string) else {
+        guard let url = URL(string: final_string) else {
             return
         }
+        
         Task {
             do {
                 let (data, response ) = try await URLSession.shared.data(from: url)
                 if let status = response as? HTTPURLResponse {
                     if status.statusCode == 200 {
-                        print("OK")
-                        let decoded_data = try JSONDecoder().decode([ISearchElement].self, from: data)
-                        parse_search(search: decoded_data)
+                        let decoded_data = try JSONDecoder().decode(Suggestion.self, from: data)
+                        search_suggestion = decoded_data
+                    }
+                    else {
+                        print("ERROR ")
                     }
                 }
             } catch {
@@ -41,20 +57,110 @@ final class IApi: ObservableObject {
         }
     }
     
-    func video_next_data(video: Video) {
-        if !video.empty_recommended() { return }
+    func search(name: String) {
+        active_search = name
+        let url_string: String = "https://invidious.snopyta.org/api/v1/search?q=\(active_search)&type=video&region=SK&page=\(page)"
+        let final_string = url_string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
-        let url_string: String = "https://invidious.snopyta.org/api/v1/videos/\(video.video_id)?region=SK"
-        guard let url = URL(string: url_string) else {
+        guard let url = URL(string: final_string) else {
             return
         }
+        loading_data = true
         Task {
             do {
                 let (data, response ) = try await URLSession.shared.data(from: url)
                 if let status = response as? HTTPURLResponse {
-                    print(status.statusCode)
-                    let decoded_data = try JSONDecoder().decode(IVideo.self, from: data)
-                    video.extra_data(data: decoded_data)
+                    if status.statusCode == 200 {
+                        let decoded_data = try JSONDecoder().decode([Video].self, from: data)
+                        if page == 1 {
+                            search_videos.removeAll()
+                            search_videos = decoded_data
+                        }
+                        else {
+                            search_videos += decoded_data
+                        }
+                        loading_data = false
+                        page+=1
+                    }
+                    else {
+                        print(status.statusCode.description)
+                    }
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
+   
+    
+    func get_trending_videos(alert: @escaping (String) -> Void ) {
+        var kat = "news"
+        switch selected_segment {
+        case 0:
+            kat = "news"
+        case 1:
+            kat = "music"
+        case 2:
+            kat = "movies"
+        case 3:
+            kat = "gaming"
+        default:
+            print("MEGALUL")
+        }
+        
+        let url_string: String = "https://invidious.snopyta.org/api/v1/trending/?pretty=1&region=SK&type=\(kat)"
+        let final_string = url_string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        guard let url = URL(string: final_string) else {
+            return
+        }
+        trending_videos.removeAll()
+        loading_data = true
+        Task {
+            do {
+                let (data, response ) = try await URLSession.shared.data(from: url)
+                if let status = response as? HTTPURLResponse {
+                    if status.statusCode == 200 {
+                        let decoded_data = try JSONDecoder().decode([Video].self, from: data)
+                        trending_videos = decoded_data
+                        loading_data = false
+                    }
+                    else {
+                        alert("404")
+                    }
+                }
+            } catch {
+                print(error)
+                alert(error.localizedDescription)
+            }
+        }
+    }
+    
+    func get_video(alert: @escaping (String) -> Void,id: String) {
+        selected_video = nil
+        present_video = true
+        
+        let url_string: String = "https://invidious.snopyta.org/api/v1/videos/\(id)"
+        let final_string = url_string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        guard let url = URL(string: final_string) else {
+            return
+        }
+        
+        loading_data = true
+        
+        Task {
+            do {
+                let (data, response ) = try await URLSession.shared.data(from: url)
+                if let status = response as? HTTPURLResponse {
+                    if status.statusCode == 200 {
+                        let decoded_data = try JSONDecoder().decode(Video.self, from: data)
+                        selected_video = decoded_data
+                        loading_data = false
+                    }
+                    else {
+                        alert("404")
+                    }
                 }
             } catch {
                 print(error)
@@ -62,38 +168,5 @@ final class IApi: ObservableObject {
         }
     }
     
-    func get_trending_videos(alert: @escaping (String) -> Void ) {
-        if !videos.isEmpty { return }
-        
-        let url_string: String = "https://invidious.snopyta.org/api/v1/trending?region=SK"
-        guard let url = URL(string: url_string) else {
-            return
-        }
-        Task {
-            do {
-                let (data, response ) = try await URLSession.shared.data(from: url)
-                if let status = response as? HTTPURLResponse {
-                    print(status.statusCode)
-                    let decoded_data = try JSONDecoder().decode([IPopularElement].self, from: data)
-                    parse_trending(trending: decoded_data)
-                }
-            } catch {
-                print(error.localizedDescription)
-                alert(error.localizedDescription)
-            }
-        }
-    }
-    
-    
-    private func parse_trending(trending: [IPopularElement]) {
-        for item in trending {
-            videos.append(Video(data: item))
-        }
-    }
-    
-    private func parse_search(search: [ISearchElement]) {
-        for item in search {
-            search_videos.append(Video(data: item))
-        }
-    }
+
 }

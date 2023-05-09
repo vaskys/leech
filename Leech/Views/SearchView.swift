@@ -10,46 +10,48 @@ import SwiftUI
 struct SearchView: View {
     @State var search_string: String = ""
     @EnvironmentObject var inv_api: IApi
+    @EnvironmentObject var alerty: Alert
     
     var body: some View {
-        NavigationStack() {
-            HStack {
-                TextField("Hladaj", text: $search_string)
-                Image(systemName: "magnifyingglass")
-                    .onTapGesture {
-                        inv_api.search(name: search_string)
-                    }
-            }
-            .padding()
-            Text("Search Results")
-                .font(.headline.bold())
+        VStack {
+            SearchBar(search_string: $search_string)
+            Divider()
             ScrollView(.vertical,showsIndicators: true) {
-                VStack(spacing: 0) {
-                    ForEach(inv_api.search_videos) { video in
-                        NavigationLink {
-                            VideoView(video: video)
-                        } label: {
-                            VStack {
-                                AImageView(url_string: video.t_medium,overlay_string: video.duration, width: nil, height: 250, max_width: nil,max_height: nil)
-                                Text(video.title)
-                                    .font(.title3)
-                                    .scaledToFit()
-                                HStack {
-                                    Text(video.autor)
-                                    Text("Views \(video.views)")
-                                }
+                LazyVStack {
+                    ForEach(Array(zip(inv_api.search_videos.indices, inv_api.search_videos)), id: \.0) { index, video in
+                        VStack {
+                            AImageView(url_string: video.get_thumb(), overlay_string: video.lengthSeconds.description, width: nil, height: 250, max_width: nil, max_height: nil)
+                            Text(video.title)
+                                .scaledToFit()
+                                .font(.title3)
+                            HStack {
+                                Text(video.author)
+                                Text(video.viewCount.description)
                             }
-                            .padding()
+                            .scaledToFit()
+                            .font(.caption)
                         }
+                        .onTapGesture {
+                            inv_api.get_video(alert: {(msg:String) in alerty.pop_alert(msg: msg)},id: video.videoId)
+                        }
+                        .onAppear() {
+                            if index == inv_api.search_videos.count - 1 {
+                                inv_api.search(name: inv_api.active_search)
+                            }
+                        }
+                    }
+                    if inv_api.loading_data {
+                        ProgressView()
                     }
                 }
             }
         }
+        .padding()
     }
 }
 
-struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchView()
-    }
-}
+//struct SearchView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SearchView()
+//    }
+//}

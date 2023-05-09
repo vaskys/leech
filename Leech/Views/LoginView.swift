@@ -17,27 +17,22 @@ struct LoginView: View {
         NavigationStack {
             VStack {
                 LogoView()
-                Spacer()
-                    .frame(height: 100)
+                    .padding(.bottom)
                 AuthInputView(title: "Input Your Login Info", button_label: "Login",type: 0) {
                     auth.login { (msg: String) in
                         alerty.pop_alert(msg: msg)
                     }
                 }
-                Spacer()
-                    .frame(height: 20)
                 Divider()
                 
                 Text("Login With Socials")
-                HStack(spacing: 30) {
+                HStack(spacing: 20) {
                     GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .icon, state: .normal)) {
                         auth.login_google { (msg: String) in
                             alerty.pop_alert(msg: msg)
                         }
                     }
                 }
-                Spacer()
-                    .frame(height: 20)
                 Divider()
                
                 HStack {

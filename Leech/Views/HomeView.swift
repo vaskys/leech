@@ -4,42 +4,65 @@
 //
 //  Created by Samo Vaský on 10/04/2023.
 //
+
+
 import SwiftUI
 import WebKit
+
+
 
 struct HomeView: View {
     @EnvironmentObject var inv_api: IApi
     @EnvironmentObject var auth: UserAuthVM
     @EnvironmentObject var alerty: Alert
     
+    
     var body: some View {
-        NavigationStack() {
-            ScrollView(.vertical,showsIndicators: true){
-                VStack(spacing: 0) {
-                    ForEach(inv_api.videos) { video in
-                        NavigationLink {
-                            VideoView(video: video)
-                        } label: {
-                            VStack {
-                                AImageView(url_string: video.t_medium,overlay_string: video.duration, width: nil, height: 250, max_width: nil,max_height: nil)
-                                Text(video.title)
-                                    .font(.title3)
-                                    .scaledToFit()
-                                HStack {
-                                    Text(video.autor)
-                                    Text("Views \(video.views)")
-                                }
+        VStack {
+            Picker("", selection: $inv_api.selected_segment) {
+                Text("Novinky").tag(0)
+                Text("Hudba").tag(1)
+                Text("Filmy").tag(2)
+                Text("Gaming").tag(3)
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .onChange(of: inv_api.selected_segment) { tag in
+                inv_api.get_trending_videos { (msg:String) in
+                    alerty.pop_alert(msg: msg)
+                }
+            }
+            ScrollView {
+                LazyVStack {
+                    ForEach(inv_api.trending_videos) { video in
+                        VStack {
+                            AImageView(url_string: video.get_thumb(), overlay_string: video.lengthSeconds.description, width: nil, height: 250, max_width: nil, max_height: nil)
+                            Text(video.title)
+                                .scaledToFit()
+                                .font(.title3)
+                            HStack {
+                                Text(video.author)
+                                Text(video.viewCount.description)
                             }
-                            .padding()
+                            .scaledToFit()
+                            .font(.caption)
                         }
+                        .onTapGesture {
+                            inv_api.get_video(alert: {(msg:String) in alerty.pop_alert(msg: msg)},id: video.videoId)
+                        }
+                    }
+                    if inv_api.loading_data {
+                        ProgressView()
+                            .padding()
                     }
                 }
             }
-            .navigationTitle("Trending")
         }
+        .padding()
         .onAppear {
-            inv_api.get_trending_videos { (msg:String) in
-                alerty.pop_alert(msg: msg)
+            if inv_api.trending_videos.isEmpty {
+                inv_api.get_trending_videos { (msg:String) in
+                    alerty.pop_alert(msg: msg)
+                }
             }
         }
     }
