@@ -15,10 +15,10 @@ struct Suggestion: Codable {
 
 
 struct Thumbnails: Codable {
-    var quality: String
-    var url: String
-    var width: Int32
-    var height: Int32
+    var quality: String = ""
+    var url: String = ""
+    var width: Int32 = 0
+    var height: Int32 = 0
     
     enum CodingKeys: String, CodingKey {
         case quality
@@ -26,6 +26,9 @@ struct Thumbnails: Codable {
         case width
         case height
     }
+    
+    init() {}
+    
 }
 
 struct Video : Codable, Identifiable {

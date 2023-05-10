@@ -62,9 +62,14 @@ struct VideoView: View {
                     else {
                         Image(systemName: "checkmark.diamond").size(width_i: 24, height_i: 24)
                             .onTapGesture {
-                                lib_vm.add_to_lib(video: video)
+                                if lib_vm.add_to_lib(video: video) {
+                                    aler_msg = "Pridane do kniznice"
+                                }
+                                else {
+                                    aler_msg = "DB Error"
+                                }
+                                
                                 alert_pop.toggle()
-                                aler_msg = "Pridane do kniznice"
                             }
                     }
                 }

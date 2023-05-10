@@ -14,14 +14,6 @@ struct LibView: View {
     
     var body: some View {
         VStack {
-            Picker("", selection: $lib_vm.selected_segment) {
-                Text("Online").tag(0)
-                Text("Stiahnute").tag(1)
-            }
-            .pickerStyle(SegmentedPickerStyle())
-            .onChange(of: lib_vm.selected_segment) { tag in
-                print("zmena")
-            }
             NavigationStack {
                 ScrollView(.vertical,showsIndicators: false) {
                     NavigationLink {

@@ -16,7 +16,7 @@ struct SearchView: View {
         VStack {
             SearchBar(search_string: $search_string)
             Divider()
-            ScrollView(.vertical,showsIndicators: true) {
+            ScrollView(.vertical,showsIndicators: false) {
                 LazyVStack {
                     ForEach(Array(zip(inv_api.search_videos.indices, inv_api.search_videos)), id: \.0) { index, video in
                         VStack {

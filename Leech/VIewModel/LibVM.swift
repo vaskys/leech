@@ -6,34 +6,168 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseAuth
+import FirebaseFirestore
+
 
 @MainActor
 class LibVM : ObservableObject {
     @Published var lib_vid = [String:Video]()
-    @Published var selected_segment = 0
     @Published var autori = [String:Int]()
+    @Published var posledne_videa = [String]()
     
-    @Published var posledne_videa = [Video]()
+    private var db = Firestore.firestore()
     
-    func remve_from_lib(video: Video) {
-        update_autor(key: video.author)
-        lib_vid.removeValue(forKey: video.videoId)
+    init() {
+        get_lib_data()
+        get_posledne_data()
     }
     
-    func add_to_lib(video: Video) {
-        lib_vid[video.videoId] = video
+    func delete_lib() {
+        lib_vid.values.forEach {
+            remove_video_from_db(video: $0)
+        }
+        remove_posledne_from_db()
+        lib_vid.removeAll()
+        autori.removeAll()
+        posledne_videa.removeAll()
+    }
+    
+    private func get_posledne_data() {
+        posledne_videa.removeAll()
         
-        posledne_videa.append(video)
-        if posledne_videa.count >= 5 {
-            posledne_videa.remove(at: 0)
+        let ui = Auth.auth().currentUser!.uid
+        let data = db.collection("users").document(ui).collection("posledne").document("last")
+        data.getDocument { (document,error) in
+            if let error = error {
+                print("Error \(error)")
+            } else {
+                if let document = document, document.exists {
+                    let posledne = document.data()
+                    if let posledne = posledne {
+                        for i in 0..<5 {
+                            let key = posledne[String(i)] as! String
+                            if key != "" {
+                                self.posledne_videa.append(key)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    private func get_lib_data() {
+        let ui = Auth.auth().currentUser!.uid
+        var _ = db.collection("users").document(ui).collection("lib").getDocuments() { (querySnapshot, error) in
+            if let error = error {
+                print("Error \(error)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    var thumb = Thumbnails()
+                    thumb.url = data["thumbnail"] as! String
+                    
+                    var video = Video(videoThumbnails: [thumb])
+                    video.videoId = data["videoId"] as! String
+                    video.title = data["title"] as! String
+                    video.lengthSeconds = data["lengthSeconds"] as! Int32
+                    video.viewCount = data["lengthSeconds"] as! Int64
+                    video.author = data["author"] as! String
+                    video.authorId = data["authorId"] as! String
+                    
+                    self.lib_vid[video.videoId] = video
+                }
+            }
+        }
+    }
+    
+    private func save_posledne_to_db() {
+        let ui = Auth.auth().currentUser!.uid
+        let data = db.collection("users").document(ui).collection("posledne").document("last")
+        var d_data = [String:String]()
+        
+        for i in 0..<5 {
+            if i < posledne_videa.count {
+                d_data[String(i)] = posledne_videa[i]
+            }
+            else {
+                d_data[String(i)] = ""
+            }
+        }
+        data.setData(d_data)
+    }
+    
+    private func remove_posledne_from_db() {
+        let ui = Auth.auth().currentUser!.uid
+        let data = db.collection("users").document(ui).collection("posledne").document("last")
+        data.setData([
+            "0":"",
+            "1":"",
+            "2":"",
+            "3":"",
+            "4":""
+        ])
+    }
+    
+    private func save_video_to_db(video: Video) -> Bool {
+        let ui = Auth.auth().currentUser!.uid
+        let data = db.collection("users").document(ui).collection("lib").document(video.videoId)
+        
+        data.setData([
+            "videoId":video.videoId,
+            "title":video.title,
+            "lengthSeconds":video.lengthSeconds,
+            "viewCount": video.viewCount,
+            "author": video.author,
+            "authorId": video.authorId,
+            "thumbnail": video.videoThumbnails[0].url
+        ]) { error in
+            if let _ = error {
+                print("error")
+            } else {
+                print("ok")
+            }
+        }
+        return true
+    }
+    
+    private func remove_video_from_db(video: Video) {
+        let ui = Auth.auth().currentUser!.uid
+        let data = db.collection("users").document(ui).collection("lib").document(video.videoId)
+        data.delete()
+    }
+    
+    func remve_from_lib(video: Video) {
+        remove_video_from_db(video: video)
+        update_autor(key: video.author)
+        lib_vid.removeValue(forKey: video.videoId)
+        
+        posledne_videa.removeAll(where: {
+            $0 == video.videoId
+        })
+    }
+    
+    func add_to_lib(video: Video) -> Bool {
+        if save_video_to_db(video: video) {
+            lib_vid[video.videoId] = video
+            
+            posledne_videa.append(video.videoId)
+            if posledne_videa.count > 5 {
+                posledne_videa.remove(at: 0)
+            }
+            
+            if check_autori(key: video.author) {
+                autori[video.author]! += 1
+            }
+            else {
+                autori[video.author] = 1
+            }
+            save_posledne_to_db()
+            return true
         }
         
-        if check_autori(key: video.author) {
-            autori[video.author]! += 1
-        }
-        else {
-            autori[video.author] = 1
-        }
+        return false
     }
     
     func check_video(video: Video) -> Bool {
@@ -74,7 +208,13 @@ class LibVM : ObservableObject {
     }
     
     func get_posledne_videa() -> Array<Video> {
-        return posledne_videa.reversed()
+        var arr = [Video]()
+        posledne_videa.forEach { id in
+            if id != "" {
+                arr.append(lib_vid[id]!)
+            }
+        }
+        return arr.reversed()
     }
     
     func get_videa() -> Array<Video> {

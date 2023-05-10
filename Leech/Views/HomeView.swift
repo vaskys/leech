@@ -31,7 +31,7 @@ struct HomeView: View {
                     alerty.pop_alert(msg: msg)
                 }
             }
-            ScrollView {
+            ScrollView(.vertical,showsIndicators: false) {
                 LazyVStack {
                     ForEach(inv_api.trending_videos) { video in
                         VStack {
