@@ -24,6 +24,7 @@ class LibVM : ObservableObject {
         get_posledne_data()
     }
     
+    
     func delete_lib() {
         lib_vid.values.forEach {
             remove_video_from_db(video: $0)
@@ -72,12 +73,13 @@ class LibVM : ObservableObject {
                     video.videoId = data["videoId"] as! String
                     video.title = data["title"] as! String
                     video.lengthSeconds = data["lengthSeconds"] as! Int32
-                    video.viewCount = data["lengthSeconds"] as! Int64
+                    video.viewCount = data["viewCount"] as! Int64
                     video.author = data["author"] as! String
                     video.authorId = data["authorId"] as! String
                     
                     self.lib_vid[video.videoId] = video
                 }
+                self.build_autor()
             }
         }
     }
@@ -147,6 +149,7 @@ class LibVM : ObservableObject {
             $0 == video.videoId
         })
     }
+    
     
     func add_to_lib(video: Video) -> Bool {
         if save_video_to_db(video: video) {
@@ -221,5 +224,17 @@ class LibVM : ObservableObject {
         var videa = [Video]()
         videa = Array(lib_vid.values).sorted { $0.title.lowercased() < $1.title.lowercased()}
         return videa
+    }
+    
+    
+    private func build_autor() {
+        lib_vid.values.forEach { video in
+            if check_autori(key: video.author) {
+                autori[video.author]! += 1
+            }
+            else {
+                autori[video.author] = 1
+            }
+        }
     }
 }
