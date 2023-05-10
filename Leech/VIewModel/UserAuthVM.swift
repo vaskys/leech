@@ -132,4 +132,11 @@ final class UserAuthVM: ObservableObject {
         }
     }
     
+    func get_email() -> String {
+        guard let user = Auth.auth().currentUser else {
+            return "no_user"
+        }
+        return user.email!
+    }
+    
 }

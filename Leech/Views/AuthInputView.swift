@@ -25,14 +25,14 @@ struct AuthInputView: View {
             case 0 :
                 TextField("Email", text: $user.email)
                     .textFieldStyle(.roundedBorder)
-                SecureField("Password", text: $user.password)
+                SecureField("Heslo", text: $user.password)
                     .textFieldStyle(.roundedBorder)
             case 1:
                 TextField("Email", text: $user.email)
                     .textFieldStyle(.roundedBorder)
-                SecureField("Password", text: $user.password)
+                SecureField("Heslo", text: $user.password)
                     .textFieldStyle(.roundedBorder)
-                SecureField("Password", text: $user.password_check)
+                SecureField("Heslo", text: $user.password_check)
                     .textFieldStyle(.roundedBorder)
             default:
                 TextField("Email", text: $user.email)

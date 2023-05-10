@@ -23,16 +23,13 @@ final class IApi: ObservableObject {
     var page = 1
     var active_search = ""
     
-    
-    private let base_url: String = "https://youtube.googleapis.com/youtube/v3/"
-    
     func reset_search() {
         page = 1
         active_search = ""
     }
     
     func get_search_sugg(text: String) {
-        let url_string: String = "https://invidious.snopyta.org/api/v1/search/suggestions?q=\(text)"
+        let url_string: String = RConfig.config.get_base_url() + "search/suggestions?q=\(text)"
         let final_string = url_string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
         guard let url = URL(string: final_string) else {
@@ -59,7 +56,7 @@ final class IApi: ObservableObject {
     
     func search(name: String) {
         active_search = name
-        let url_string: String = "https://invidious.snopyta.org/api/v1/search?q=\(active_search)&type=video&region=SK&page=\(page)"
+        let url_string: String = RConfig.config.get_base_url() + "search?q=\(active_search)&type=video&region=SK&page=\(page)"
         let final_string = url_string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
         guard let url = URL(string: final_string) else {
@@ -108,7 +105,7 @@ final class IApi: ObservableObject {
             print("MEGALUL")
         }
         
-        let url_string: String = "https://invidious.snopyta.org/api/v1/trending/?pretty=1&region=SK&type=\(kat)"
+        let url_string: String = RConfig.config.get_base_url() + "trending/?pretty=1&region=SK&type=\(kat)"
         let final_string = url_string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
         guard let url = URL(string: final_string) else {
@@ -140,7 +137,7 @@ final class IApi: ObservableObject {
         selected_video = nil
         present_video = true
         
-        let url_string: String = "https://invidious.snopyta.org/api/v1/videos/\(id)"
+        let url_string: String = RConfig.config.get_base_url() + "videos/\(id)"
         let final_string = url_string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
         guard let url = URL(string: final_string) else {

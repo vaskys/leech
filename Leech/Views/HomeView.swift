@@ -35,7 +35,7 @@ struct HomeView: View {
                 LazyVStack {
                     ForEach(inv_api.trending_videos) { video in
                         VStack {
-                            AImageView(url_string: video.get_thumb(), overlay_string: video.lengthSeconds.description, width: nil, height: 250, max_width: nil, max_height: nil)
+                            AImageView(url_string: video.get_thumb(), overlay_string: video.get_cas(), width: nil, height: 250, max_width: nil, max_height: nil)
                             Text(video.title)
                                 .scaledToFit()
                                 .font(.title3)

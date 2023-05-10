@@ -13,14 +13,14 @@ struct ResetPasword: View {
     
     var body: some View {
         VStack {
-            AuthInputView(title: "Enter Your Email", button_label: "Reset",type: -1) {
+            AuthInputView(title: "Email", button_label: "Reset",type: -1) {
                 user.reset_password { (msg: String) in
                     alerty.pop_alert(msg: msg)
                 }
             }
         }
         .padding()
-        .navigationTitle("Register")
+        .navigationTitle("Obnova Hesla")
     }
 }
 

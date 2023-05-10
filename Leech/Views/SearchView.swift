@@ -20,7 +20,7 @@ struct SearchView: View {
                 LazyVStack {
                     ForEach(Array(zip(inv_api.search_videos.indices, inv_api.search_videos)), id: \.0) { index, video in
                         VStack {
-                            AImageView(url_string: video.get_thumb(), overlay_string: video.lengthSeconds.description, width: nil, height: 250, max_width: nil, max_height: nil)
+                            AImageView(url_string: video.get_thumb(), overlay_string: video.get_cas(), width: nil, height: 250, max_width: nil, max_height: nil)
                             Text(video.title)
                                 .scaledToFit()
                                 .font(.title3)

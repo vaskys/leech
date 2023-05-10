@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RootView: View {
     @StateObject var inv_api = IApi()
+    @StateObject var lib_vm = LibVM()
     @EnvironmentObject var alerty: Alert
     
     var body: some View {
@@ -33,10 +34,12 @@ struct RootView: View {
         }
         .tableStyle(.inset)
         .environmentObject(inv_api)
+        .environmentObject(lib_vm)
         .sheet(isPresented: $inv_api.present_video) {
             VideoView()
                 .environmentObject(inv_api)
                 .environmentObject(alerty)
+                .environmentObject(lib_vm)
         }
     }
 }

@@ -45,6 +45,7 @@ struct SearchBar: View {
                                                 ForEach(1..<5) { i in
                                                     if i < sug.suggestions.count - 1 {
                                                         Button{
+                                                            search_string = sug.suggestions[i]
                                                             inv_api.reset_search()
                                                             inv_api.search(name: sug.suggestions[i])
                                                             edit = false

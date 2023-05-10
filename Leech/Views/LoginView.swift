@@ -18,14 +18,14 @@ struct LoginView: View {
             VStack {
                 LogoView()
                     .padding(.bottom)
-                AuthInputView(title: "Input Your Login Info", button_label: "Login",type: 0) {
+                AuthInputView(title: "Prihlasovacie Udaje", button_label: "Prihlasit",type: 0) {
                     auth.login { (msg: String) in
                         alerty.pop_alert(msg: msg)
                     }
                 }
                 Divider()
                 
-                Text("Login With Socials")
+                Text("Prihlasit pomocou Google")
                 HStack(spacing: 20) {
                     GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .icon, state: .normal)) {
                         auth.login_google { (msg: String) in
@@ -39,7 +39,7 @@ struct LoginView: View {
                     NavigationLink {
                         RegisterView()
                     } label: {
-                        Text("Create Account")
+                        Text("Vytvoriť učet")
                             .font(.headline)
                     }
                     Divider()
@@ -48,7 +48,7 @@ struct LoginView: View {
                     NavigationLink {
                         ResetPasword()
                     } label: {
-                        Text("Forgot Password")
+                        Text("Zabudnute Heslo")
                             .font(.headline)
                     }
                 }

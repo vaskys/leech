@@ -13,14 +13,14 @@ struct RegisterView: View {
     
     var body: some View {
         VStack {
-            AuthInputView(title: "Enter Your Register Info", button_label: "Register",type: 1) {
+            AuthInputView(title: "Registracne Udaje", button_label: "Registrovat",type: 1) {
                 user.register { (msg: String) in
                     alerty.pop_alert(msg: msg)
                 }
             }
         }
         .padding()
-        .navigationTitle("Register")
+        .navigationTitle("Registracia")
        
     }
 }

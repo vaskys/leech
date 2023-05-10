@@ -55,4 +55,11 @@ struct Video : Codable, Identifiable {
     func get_thumb() -> String {
         return videoThumbnails[0].url
     }
+    
+    func get_cas() -> String {
+        let cas = RConfig.secondsToHoursMinutesSeconds(Int(lengthSeconds))
+        let do_text: String = "\(cas.0):\(cas.1):\(cas.2)"
+        
+        return do_text
+    }
 }

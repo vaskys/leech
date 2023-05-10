@@ -13,6 +13,7 @@ struct ProfileView: View {
     
     var body: some View {
         VStack {
+            Text(auth.get_email())
             Button() {
                 Task {
                     try auth.logout { (msg: String) in
